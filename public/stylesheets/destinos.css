@@ -1,0 +1,22 @@
+/* DESTINOS - INICIO*/
+
+.imagen{
+    margin-bottom: 1em;
+}
+.fila-descripcion{
+    margin-left: 0!important;
+    margin-right: 0!important;
+    padding: 5%;
+}
+
+.imagen-descripcion{
+    text-align: center;
+}
+.titulo{
+    font-family: 'Oleo Script', cursive;
+    text-align: center;
+    padding: 3%;
+}
+
+
+/* DESTINOS - FIN */

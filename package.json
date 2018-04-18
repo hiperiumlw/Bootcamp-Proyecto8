@@ -1,0 +1,34 @@
+{
+  "name": "actividad4",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "set NODE_ENV=desarrollo&& nodemon ./bin/www",
+    "forever": "forever start ./bin/www",
+    "forever-stop": "forever stop 0"
+  },
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "bcrypt-nodejs": "0.0.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "^4.16.3",
+    "express-paginate": "^0.3.0",
+    "express-session": "^1.15.6",
+    "forever": "^0.15.3",
+    "hbs": "~4.0.1",
+    "hbs-utils": "0.0.4",
+    "http-errors": "~1.6.2",
+    "jbox": "^0.4.8",
+    "morgan": "~1.9.0",
+    "multer": "^1.3.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "nodemailer": "^4.6.4",
+    "nodemailer-express-handlebars": "^3.0.0",
+    "nodemon": "^1.17.2",
+    "sequelize": "^4.37.6",
+    "winston": "^2.4.1"
+  }
+}

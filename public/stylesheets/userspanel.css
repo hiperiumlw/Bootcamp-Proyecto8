@@ -1,0 +1,16 @@
+.wrapper-userspanel{
+    padding-top: 5em;
+    padding-bottom: 5em;
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+    border-top: 1px solid #1cbbb4;
+    min-height: 25em;
+}
+
+.tabla-usuarios-userspanel{
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
+}
+
+.tabla-usuarios-userspanel tr th{
+    text-align: center;
+}

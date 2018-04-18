@@ -1,0 +1,84 @@
+<header>
+    <div class="wrapper-menu-principal">
+        <div class="container-fluid">
+            <div class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex justify-content-between menu-informacion">
+                    <div class="d-flex flex-row ml-5">
+                        <div class="menu-informacion-correo">
+                            <i class="fas fa-envelope"></i>
+                            <span>enquiry@geekshubtravels.com</span>
+                        </div>
+                        <div class="menu-informacion-phone">
+                            <i class="fas fa-phone-volume"></i>
+                            <span>0264 123 4567</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row mr-5">
+                        <div class="">
+
+                        </div>
+                        <div class="menu-informacion-redessociales">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <a class="navbar-brand" href="/"><img class="img-fluid" src="/images/logo2.png" alt="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link opcion-menu-home" href="/">Inicio <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link opcion-menu-home" href="#destinos">Destinos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link opcion-menu-home" href="#somos">Quienes Somos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link opcion-menu-home" href="#contacto">Contáctanos</a>
+                        </li>
+                        {{#if isLogged}}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> {{isLogged}}</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Mi Perfil</a>
+                                    {{#if isAdmin}}
+                                    <a class="dropdown-item" href="/admins/adminpanel">Administrar los Destinos</a>
+                                    <a class="dropdown-item" href="/admins/userpanel">Administrar los Usuarios</a>
+                                    {{/if}}
+                                    <a class="dropdown-item" href="/users/logout">Cerrar Sesión</a>
+                                </div>
+                            </li>
+                        {{else}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/users/login"><i class="fas fa-user"></i> Registrarse / Iniciar Sesión</a>
+                            </li>
+                        {{/if}}
+                        <!--<li class="nav-item">-->
+                            <!--<a class="nav-link opcion-menu-home" href="#"><i class="fas fa-shopping-cart"></i></a>-->
+                        <!--</li>-->
+                        <!--<li class="nav-item dropdown">-->
+                            <!--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                                <!--Dropdown-->
+                            <!--</a>-->
+                            <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                                <!--<a class="dropdown-item" href="#">Action</a>-->
+                                <!--<a class="dropdown-item" href="#">Another action</a>-->
+                                <!--<div class="dropdown-divider"></div>-->
+                                <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>

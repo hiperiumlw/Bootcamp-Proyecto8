@@ -1,0 +1,537 @@
+/*ESTILO PRINCIPAL - INICIO */
+.container-fluid{
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+.row{
+    margin-right: 0!important;
+    margin-left: 0!important;
+}
+/*ESTILO PRINCIPAL - FIN */
+
+
+/*MENU PRINCIPAL NUEVO - INICIO */
+.menu-informacion{
+    background: #fafafa;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+.menu-informacion-correo{
+    padding-left: 1em;
+    padding-right: 1em;
+    border-right: 1px solid #ebebeb;
+    margin-right: 1em;
+    color: #acacac;
+    font-size: 14px;
+}
+.menu-informacion-phone{
+    color:#959595;
+    font-size: 14px;
+}
+.menu-informacion-redessociales{
+    font-size: 17px;
+    border-left: 1px solid #ebebeb;
+}
+.menu-informacion-redessociales a{
+    color: #acacac;
+    margin-left: 0.5em;
+}
+.menu-informacion-redessociales a:hover{
+    color:#1cbbb4;
+}
+.nav-link{
+    font-family: 'Raleway', sans-serif;
+    color:#8c8c8c !important;
+    border-bottom: 1px solid transparent;
+}
+.nav-link:hover{
+    color:#1cbbb4 !important;
+    border-bottom: 1px solid #1cbbb4;
+}
+.dropdown:hover>.dropdown-menu{
+    display: block;
+}
+/*.fa-shopping-cart{*/
+    /*font-size: 2em;*/
+/*}*/
+/*MENU PRINCIPAL NUEVO - FIN */
+
+/*MENU CAROUSEL - INICIO*/
+#menu-carousel{
+    font-family: 'Raleway', sans-serif;
+    min-height: 40em;
+    background: url("../images/slider1.jpg")center center no-repeat;
+    background-size: auto;
+}
+
+.tab-content{
+    background-color: #fafafa !important;
+    border-bottom: 3px solid #1cbbb4;
+    padding: 3%;
+}
+.tab-vuelos-item,.tab-hoteles-item,.tab-destinos-item{
+    background-color: #1cbbb4;
+}
+.tab-vuelos-item .nav-link,.tab-hoteles-item .nav-link,.tab-destinos-item .nav-link{
+    color: #FFFFFF !important;
+    font-size: 1.1em;
+}
+.tab-vuelos-item .nav-link[aria-selected="true"],.tab-hoteles-item .nav-link[aria-selected="true"],.tab-destinos-item .nav-link[aria-selected="true"]{
+    color: #1cbbb4 !important;
+    background-color: #fafafa;
+}
+.boton-carousel-buscar{
+    color: #FFFFFF !important;
+    background-color: #1cbbb4;
+    border: transparent;
+    transition: background-color 0.5s;
+}
+.boton-carousel-buscar:hover{
+    background-color: #1aaaa1 !important;
+}
+/*MENU CAROUSEL - FIN*/
+
+/*DESTINOS - INICIO: MARTIN */
+.contenedor-destinos .row{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+#destinos,#destinos-moviles{
+    min-height: 25em;
+    background: #FFFFFF;
+    font-family: 'Raleway', sans-serif;
+}
+
+.ultimahora,  .proximos{
+    margin-left: 3%;
+    margin-bottom: 0px !important;
+    padding-top: 3%;
+    color: darkslategrey;
+    font-size: x-large;
+
+}
+.columna-ultimahora{
+    padding-bottom: 2em !important;
+}
+.fila-destinos{
+    padding: 2%;
+}
+.fila-destinos a{
+    text-decoration: none;
+}
+.destino{
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    border-bottom: 3px solid transparent;
+}
+
+.destino h4{
+    font-size: 18px;
+    color:#46403c;
+    margin:0px !important;
+    padding: 10px 10px 0px 10px;
+}
+
+
+.p-1{
+    padding: 0px !important;
+}
+
+.destino strong{
+    color:#d03505;
+    font-size: 14px;
+    padding: 10px 0px 0px 10px;
+}
+
+.destino .descripcion{
+    color: grey;
+    font-size: 12px;
+    padding: 10px 0px 0px 10px;
+}
+
+.destino .reservar{
+    display: inherit;
+}
+
+.destino .expira{
+    color:black;
+    font-size: small;
+margin-right: 2em;
+}
+.destino .precio{
+    color:grey;
+
+}
+
+.destino .precio strong{
+    font-weight: bolder;
+    font-size: 30px;
+    color: black;
+    padding: 0px 0px 0px 0px !important;
+    margin-right: 1em;
+}
+.destino .reservar .btn-warning{
+    color: #FFFFFF !important;
+    background-color: #1cbbb4;
+    border: transparent;
+    transition: background-color 0.5s;
+}
+.destino .reservar .btn-warning:hover{
+    background-color: #1aaaa1 !important;
+}
+.destino-imagen-home{
+    min-height: 12em;
+}
+
+.destino:hover {
+    border-bottom: 3px solid #1cbbb4;
+}
+
+a:focus{
+    outline: none;
+}
+.tooltip-general{
+    display: flex;
+}
+.tooltip-salida-img,.tooltip-regreso-img{
+    background-color: white;
+}
+.tooltip-general:nth-child(2){
+    margin-top: 1em;
+}
+.tooltip-salida-descripcion,.tooltip-regreso-descripcion{
+    margin-left: 1em;
+    font-size: small;
+}
+.fila-disponibilidad{
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+}
+.detalles-oferta{
+    font-size: 18px;
+    color:#46403c;
+    margin:0px !important;
+    padding: 10px 10px 0px 10px;
+}
+
+.descripcion-oferta{
+    color: grey;
+    font-size: 15px;
+    padding: 10px 0px 0px 10px;
+}
+.descripcion-oferta-precio{
+    margin: 10px 0px 0px 10px;
+    min-width: 30%;
+    border-radius: 3px;
+}
+
+.descripcion-oferta-precio span:nth-child(2){
+    margin-left: 1em;
+    font-weight: bold;
+}
+
+.descripcion-label{
+    font-size: 1em;
+    color: #868e96;
+}
+.form-control{
+    min-height: 45px;
+    font-size: large !important;
+}
+
+.columna-ida-idayvuelta label{
+    margin-left: 0.5em;
+    margin-right: 1em;
+}
+.boton-modal-descripcion-destino{
+    color: #FFFFFF;
+    background-color: #1cbbb4;
+    border: transparent;
+    transition: background-color 0.5s;
+}
+.boton-modal-descripcion-destino:hover{
+    background-color: #1aaaa1 !important;
+}
+/*DESTINOS - FIN : MARTIN */
+
+/*QUIENES SOMOS - INICIO*/
+#somos{
+    background-image: url("../images/somos.jpg");
+    background-position: center center;
+    background-size: cover;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.quiSom{
+    padding: 2%;
+    background: #fff;
+    border: 2px solid #008ae6;
+    border-radius: 8px;
+    /*box-shadow: 4px 3px 4px #000033;*/
+}
+
+.quiSom:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.quiSom h2{
+    border-bottom: 3px solid #ffff00;
+    max-width: 230px;
+}
+.quiSom a{
+    margin-left: 28%;
+}
+/*QUIENES SOMOS - FIN*/
+
+/*MAPA - CONTACTO : MARTIN*/
+.fila-contacto-titulo{
+    padding-left: 3%; !important;
+    padding-right: 3% !important;
+    padding-top: 3% !important;
+    padding-bottom: 0px !important;
+}
+
+.fila-contacto-formulario,.fila-mapa{
+    padding: 3% !important;
+    margin: 0px !important;
+}
+
+.fila-contacto-formulario form{
+    display: flex;
+    width: 100%;
+}
+
+.fila-mapa iframe{
+    width: 100%;
+    height: 100%;
+}
+.fila-mapa .col-6{
+    padding: 0px !important;
+    border: 1px solid black;
+    min-height: 15em;
+}
+.content-header{
+    font-family: 'Oleo Script', cursive;
+    color:#fcc500;
+    font-size: 45px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.section-content{
+    text-align: center;
+}
+
+.wrapper-contacto{
+    font-family: 'Teko', sans-serif;
+    padding-top: 60px;
+    background: white; /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to left, #3a6186 , #89253e); /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to left, #3a6186 , #89253e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color : #fff;
+}
+.linea-formulario{
+    border-right: 1px solid black;
+}
+label{
+    font-size: 1.3em;
+    line-height: 1em;
+    font-weight: normal;
+    color: black;
+}
+.form-control{
+    font-size: 1.3em;
+    color: #080808;
+}
+textarea.form-control {
+    height: 135px;
+    /* margin-top: px;*/
+}
+.submit{
+    font-size: 1.1em;
+    float: right;
+    width: 150px;
+    background-color: transparent;
+    border: 1px solid #B29999;
+}
+
+/*MAPA - CONTACTO : MARTIN*/
+
+/*FOOTER - INICIO*/
+.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display:none;
+    border-radius: 0px !important;
+    min-width: 3em !important;
+    color: #FFFFFF;
+    background-color: #1cbbb4;
+    border: transparent;
+    transition: background-color 0.5s;
+}
+footer{
+    color: #fff;
+    background: #303033;
+    padding-top: 2%;
+    font-family: 'Raleway', sans-serif;
+}
+
+footer hr{
+    background-color: #fff;
+}
+
+footer h3{
+    font-size: 16px;
+    color: #FFFFFF;
+}
+footer span{
+    color: #acacac;
+}
+footer .footer-redessociales{
+    font-size: 25px;
+}
+footer .footer-redessociales a{
+    color: #acacac;
+    margin-left: 0.5em;
+}
+
+#informacion a{
+    color: #acacac;
+}
+/*
+.redS2{
+    display: none;
+}
+*/
+/*FOOTER - FIN*/
+
+/*PAGINA ERROR - INICIO*/
+.wrapper-paginaerror{
+    min-height: 30em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: #F5F5F5;
+    font-family: 'Raleway', sans-serif;
+}
+
+.columna-paginaerror{
+    background-color: #FFFFFF;
+}
+
+.boton-paginaerror{
+    color: #FFFFFF;
+    max-width: 10em !important;
+    background-color: #1cbbb4;
+    border: transparent;
+    transition: background-color 0.5s;
+    margin-bottom: 1em;
+}
+
+/*PAGINA ERROR - FIN*/
+@media screen and (max-width: 780px) {
+
+    #menu{
+        background-color: #00091a;
+        opacity:0.8;
+        /*max-height:100px ;*/
+        background-size:cover;
+        z-index: 1;
+    }
+
+
+    #navbarTogglerDemo02{
+        text-align: right;
+        padding-top: 2%;
+        width:auto;
+    }
+
+    #ayuda, #newsletter, #informacion{
+        padding: 0%;
+    }
+    #redesSocial{
+        display: none;
+    }
+
+    #redesSocial2{
+        display: initial;
+    }
+    #redesSocial2 .row .col-12{
+        padding-left: 25vw;
+    }
+
+    #redesSocial2 ul{
+        list-style-type: none;
+    }
+
+    #redesSocial2 ul li{
+        float: left;
+        margin-right: 0.5em;
+    }
+
+    /*DESTINOS - INICIO : MARTIN*/
+
+    .columna-proximo,.columna-ultimahora{
+        margin-top: 1em;
+    }
+    .fila-destinos .col-12,.col-sm-12{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    /* DESTINOS - FIN : MARTIN */
+
+
+
+}
+
+
+@media screen and (max-width: 700px) {
+
+
+   #informacion, #dondeEstamos,  .wrapper-contacto{
+
+        display: none;
+    }
+
+    .viaja{
+        color: #ffffff;
+        margin-top: 25%;
+        margin-left: 15%;
+    }
+
+    #somos{
+        background: #66ccff;
+    }
+
+
+    #ayuda, #newsletter{
+
+          padding-left: 8%;
+      }
+    #ayuda h5, #newsletter h5{
+        text-decoration: underline #ffff00;
+    }
+    #redesSocial2 .row .col-12{
+        padding-left: 5vw;
+    }
+
+
+}
+
+@media (max-width: 991px) {
+    .navbar-brand{
+        margin-left: 1rem !important;
+    }
+    /* MENU PRINCIPAL - INICIO : MARTIN */
+
+    .boton-registro-menu{
+        margin-top: 0.5em;
+        margin-left: 0px;
+    }
+
+    /*MENU PRINCIPAL - FIN*/
+}
+

@@ -1,0 +1,330 @@
+<section>
+    <div class="wrapper-adminpanel">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-10 offset-1">
+                    {{#if añadir}}
+                        <div class="alert alert-success">{{añadir}}</div>
+                    {{/if}}
+                    {{#if borrar}}
+                        <div class="alert alert-success">{{borrar}}</div>
+                    {{/if}}
+                    {{#if actualizar}}
+                        <div class="alert alert-success">{{actualizar}}</div>
+                    {{/if}}
+                    {{#if destinos.length}}
+                        <table class="table tabla-destinos-adminpanel">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Fechas</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Activo</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each destinos}}
+                                <tr>
+                                    <th scope="row">{{id}}</th>
+                                    <td>{{nombre}}</td>
+                                    <td>Ida: {{fecha_ida}} Vuelta:{{fecha_vuelta}}</td>
+                                    <td>{{titulo_descr}}</td>
+                                    <td>
+                                        <img src="{{imagen}}" class="imagen-adminpanel">
+                                    </td>
+                                    <td>{{precio}}€</td>
+                                    <td>
+                                        {{#if activo}}<i class="fas fa-check-circle"></i>{{else}}<i class="fas fa-times"></i>{{/if}}
+                                    </td>
+                                    <td class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarDestino{{id}}"><i class="fas fa-edit"></i>Editar
+                                        </button>
+                                        <a href="/admins/adminpanel/borrar/{{id}}"><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar
+                                        </button></a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            <tr>
+                                <td>
+                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                                            data-target="#añadirdestino-adminpanel"><i class="fas fa-plane"></i>Añadir nuevo
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <!--Paginacion-->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+
+                                <!-- anterior enlace -->
+                                {{#with paginate}}
+                                    {{#if hasPreviousPages}}<!--res.locals.hasPreviousPages-->
+                                        <li class="page-item prev">
+                                            <a class="page-link" href="{{prev_link this}}">Anterior</a>
+                                        </li>
+                                    {{/if}}
+                                {{/with}}
+
+                                <!-- del 1 al n -->
+                                {{#each links}}
+                                    <li class="page-item {{is_active @index ../currentPage }}"><!-- custom helper -->
+                                        <a class="page-link" href="{{url}}">{{number}}</a>
+                                    </li>
+                                {{/each}}
+
+                                <!-- siguiente enlace -->
+                                {{#with paginate}}
+                                    {{#has_next_links ../pageCount this}}
+                                        <li class="page-item next">
+                                            <a class="page-link" href="{{next_link ../this}}">Siguiente</a>
+                                        </li>
+                                    {{/has_next_links}}
+                                {{/with}}
+                            </ul>
+                        </nav>
+                    {{/if}}
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="añadirdestino-adminpanel" role="dialog" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <form action="/admins/adminpanel/crear" enctype="multipart/form-data" method="post" class="formulario-añadirdestino-adminpanel">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-plane"></i>
+                                            Añadir Destino</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label for="nombre-añadirdestino-adminpanel">Nombre del Destino</label>
+                                                <input type="text" class="form-control" name="nombre" placeholder="Nombre..." required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="descripcion-añadirdestino-adminpanel">Descripción</label>
+                                                <input type="text" class="form-control" name="descripcion" placeholder="Descripcion..." required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="tipo-añadirdestino-adminpanel">Tipo</label>
+                                                    </div>
+                                                    <select name="tipo" class="custom-select">
+                                                        <option selected>Elige una opción...</option>
+                                                        <option value="Estancia">Estancia</option>
+                                                        <option value="Estancia + Vuelo">Estancia + Vuelo</option>
+                                                        <option value="Visita guiada">Visita guiada</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="oferta-añadirdestino-adminpanel">Oferta</label>
+                                                    </div>
+                                                    <select name="oferta" class="custom-select">
+                                                        <option selected>Elige una opción...</option>
+                                                        <option value="Vuelo + Alojamiento + 4 Desayunos + Guía Turistica">Vuelo + Alojamiento + 4 Desayunos + Guía Turistica</option>
+                                                        <option value="8 dias - 7 noches">8 dias - 7 noches</option>
+                                                        <option value="Vuelo + Alojamiento + Todo Incluido">Vuelo + Alojamiento + Todo Incluido</option>
+                                                        <option value="Vuelo + Alojamiento + Traslado">Vuelo + Alojamiento + Traslado</option>
+                                                        <option value="Vuelo + Estancia 9 noches en Hotel de 5 estrellas">Vuelo + Estancia 9 noches en Hotel de 5 estrellas</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label for="precio-añadirdestino-adminpanel">Precio</label>
+                                                <input type="number" class="form-control" name="precio" placeholder="Precio..." required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="plazas-añadirdestino-adminpanel">Plazas</label>
+                                                <input type="number" class="form-control" name="plazas" placeholder="Plazas..." required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label for="fechaida-añadirdestino-adminpanel">Fecha Ida</label>
+                                                <input type="date" class="form-control" name="fecha_ida" id="fechaida-añadirdestino-adminpanel" required>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="horaida-añadirdestino-adminpanel">Hora Ida</label>
+                                                <input type="time" class="form-control" name="hora_ida" id="horaida-añadirdestino-adminpanel" required>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label for="fechavuelta-añadirdestino-adminpanel">Fecha Vuelta</label>
+                                                <input type="date" class="form-control" name="fecha_vuelta" id="fechavuelta-añadirdestino-adminpanel" required>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="horavuelta-añadirdestino-adminpanel">Hora Vuelta</label>
+                                                <input type="time" class="form-control" name="hora_vuelta" id="horavuelta-añadirdestino-adminpanel" required>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+
+                                            <div class="col-md-6">
+                                                <label for="imagen-añadirdestino-adminpanel">Imagen</label>
+                                                <input type="file" class="form-control" id="imagen-añadirdestino-adminpanel" name="file" required>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="aeropuerto-añadirdestino-adminpanel">Aeropuerto</label>
+                                                <input type="text" class="form-control" id="aeropuerto-añadirdestino-adminpanel" name="aeropuerto" placeholder="Aeropuerto..." required>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="activo" id="activo-añadirdestino-adminpanel">
+                                                    <label for="activo-añadirdestino-adminpanel">
+                                                        Activo
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">Añadir</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    {{#each destinos}}
+                        <!-- Modal -->
+                        <div class="modal fade" id="editarDestino{{id}}" role="dialog" aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <form action="/admins/adminpanel/editar" enctype="multipart/form-data" method="post" class="formulario-añadirdestino-adminpanel">
+                                    <input type="text" name="id" value="{{id}}" style="display: none">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-plane"></i>
+                                                Añadir Destino</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <label for="nombre-añadirdestino-adminpanel">Nombre del Destino</label>
+                                                    <input type="text" class="form-control" name="nombre" value="{{nombre}}" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="descripcion-añadirdestino-adminpanel">Descripción</label>
+                                                    <input type="text" class="form-control" name="descripcion" value="{{titulo_descr}}" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <label class="input-group-text" for="tipo-añadirdestino-adminpanel">Tipo</label>
+                                                        </div>
+                                                        <select name="tipo" class="custom-select">
+                                                            <option selected>{{tipo}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <label class="input-group-text" for="oferta-añadirdestino-adminpanel">Oferta</label>
+                                                        </div>
+                                                        <select name="oferta" class="custom-select">
+                                                            <option selected>{{oferta}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <label for="precio-añadirdestino-adminpanel">Precio</label>
+                                                    <input type="number" class="form-control" name="precio" value="{{precio}}" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="plazas-añadirdestino-adminpanel">Plazas</label>
+                                                    <input type="number" class="form-control" name="plazas" value="{{plazas}}" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <label for="fechaida-añadirdestino-adminpanel">Fecha Ida</label>
+                                                    <input type="date" class="form-control" name="fecha_ida"  value="{{fecha_ida}}" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="horaida-añadirdestino-adminpanel">Hora Ida</label>
+                                                    <input type="time" class="form-control" name="hora_ida"  value="{{hora_ida}}" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <label for="fechavuelta-añadirdestino-adminpanel">Fecha Vuelta</label>
+                                                    <input type="date" class="form-control" name="fecha_vuelta" value="{{fecha_vuelta}}" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="horavuelta-añadirdestino-adminpanel">Hora Vuelta</label>
+                                                    <input type="time" class="form-control" name="hora_vuelta" value="{{hora_vuelta}}" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+
+                                                <div class="col-md-6">
+                                                    <label for="imagen-añadirdestino-adminpanel">Imagen</label>
+                                                    <input type="file" class="form-control" name="file" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="aeropuerto-añadirdestino-adminpanel">Aeropuerto</label>
+                                                    <input type="text" class="form-control" name="aeropuerto" value="{{aeropuerto}}" required>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="activo" {{#if activo}}checked{{/if}}>
+                                                        <label for="activo-añadirdestino-adminpanel">
+                                                            Activo
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">Añadir</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

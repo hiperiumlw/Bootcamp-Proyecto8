@@ -1,0 +1,177 @@
+<section>
+    <div class="wrapper-userspanel">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-10 offset-1">
+                    {{#if editar}}
+                        <div class="alert alert-success">{{editar}}</div>
+                    {{/if}}
+                    {{#if borrarUsuario}}
+                        <div class="alert alert-success">{{borrarUsuario}}</div>
+                    {{/if}}
+                    {{#if usernameError}}
+                        <div class="alert alert-warning">{{usernameError}}</div>
+                    {{/if}}
+                    {{#if emailError}}
+                        <div class="alert alert-warning">{{emailError}}</div>
+                    {{/if}}
+                    {{#if registerCorrectly}}
+                        <div class="alert alert-success">{{registerCorrectly}}</div>
+                    {{/if}}
+                    {{#if sendEmailCorrectly}}
+                        <div class="alert alert-success">{{sendEmailCorrectly}}</div>
+                    {{/if}}
+                    {{#if clientes.length}}
+                        <table class="table tabla-usuarios-userspanel">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">isAdmin</th>
+                                <th scope="col">Active</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each clientes}}
+                                <tr>
+                                    <th scope="row">{{id}}</th>
+                                    <td>{{usuario}}</td>
+                                    <td>{{email}}</td>
+                                    <td>{{#if isAdmin}}<i class="fas fa-check-circle"></i>{{else}}<i class="fas fa-times"></i>{{/if}}</td>
+                                    <td>{{#if active}}<i class="fas fa-check-circle"></i>{{else}}<i class="fas fa-times"></i>{{/if}}</td>
+                                    <td class="d-flex justify-content-around">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarUsuario{{id}}"><i class="fas fa-edit"></i>Editar
+                                        </button>
+                                        <a href="/admins/userpanel/borrar/{{id}}"><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar
+                                        </button></a>
+                                        <a href="/admins/userpanel/recuperar/{{id}}"><button type="button" class="btn btn-danger"><i class="fas fa-envelope"></i> Recuperar
+                                        </button></a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            <tr>
+                                <td>
+                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal"
+                                            data-target="#añadirusuario-userpanel"><i class="fas fa-user"></i> Añadir nuevo
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    {{/if}}
+                    {{#if clientes.length}}
+                        {{#each clientes}}
+                            <!-- Modal -->
+                            <div class="modal fade" id="editarUsuario{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form action="/admins/userpanel/editar" method="post">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user"></i> Editar Usuario</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                                <div class="d-flex flex-row">
+                                                    <div class="col-6" style="display: none;">
+                                                        <label for="id">ID del Usuario</label>
+                                                        <input type="text" class="form-control" name="id" value="{{id}}" >
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="usuario">Nombre del Usuario</label>
+                                                        <input type="text" class="form-control" name="usuario" value="{{usuario}}"  required>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="email">Email</label>
+                                                        <input type="email" class="form-control" name="email" value="{{email}}" required>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row">
+                                                    <div class="col-6">
+                                                        <label for="isAdmin">isAdmin</label>
+                                                        <select name="isAdmin" class="form-control">
+                                                            <option value="0" {{#if isAdmin}}{{else}}selected{{/if}}>No</option>
+                                                            <option value="1" {{#if isAdmin}}selected{{/if}}>Si</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="active">Active</label>
+                                                        <select name="active" class="form-control">
+                                                            <option value="0" {{#if active}}{{else}}selected{{/if}}>No</option>
+                                                            <option value="1" {{#if active}}selected{{/if}}>Si</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-primary">Editar</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    {{/if}}
+                    <!-- Modal -->
+                    <div class="modal fade" id="añadirusuario-userpanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form action="/admins/userpanel/crear" method="post">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user"></i> Añadir Usuario</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex flex-row">
+                                            <div class="col-6">
+                                                <label for="usuario">Nombre del Usuario</label>
+                                                <input type="text" class="form-control" name="usuario" required>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="email">Email</label>
+                                                <input type="email" class="form-control" name="email" required>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row">
+                                            <div class="col-6">
+                                                <label for="password">Password</label>
+                                                <input type="password" class="form-control" name="password" required>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="isAdmin">isAdmin</label>
+                                                <select name="isAdmin" class="form-control">
+                                                    <option value="0" selected>No</option>
+                                                    <option value="1" >Si</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row">
+                                            <div class="col-6">
+                                                <label for="active">Active</label>
+                                                <select name="active" class="form-control">
+                                                    <option value="0">No</option>
+                                                    <option value="1">Si</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Añadir</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

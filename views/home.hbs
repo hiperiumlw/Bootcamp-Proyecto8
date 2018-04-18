@@ -1,0 +1,347 @@
+<section id="menu-carousel" class="d-flex flex-column justify-content-end align-items-center">
+    <!--<div class="col-10">-->
+        <!--<h1><b>Viaja !</b></h1>-->
+        <!--<h3>Descubre lugares maravillosos</h3>-->
+    <!--</div>-->
+    <div class="col-10">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item tab-vuelos-item">
+                <a class="nav-link active" data-toggle="tab" href="#tab-vuelos" role="tab" aria-controls="home" aria-selected="true"> <i class="fas fa-plane"></i> Vuelos</a>
+            </li>
+            <li class="nav-item tab-hoteles-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-hoteles" role="tab" aria-controls="profile" aria-selected="false"><i class="fas fa-bed"></i> Hoteles</a>
+            </li>
+            <li class="nav-item tab-destinos-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-destinos" role="tab" aria-controls="contact" aria-selected="false"><i class="fas fa-suitcase"></i> Destinos</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="tab-vuelos" role="tabpanel" aria-labelledby="home-tab">
+                <form action="" method="" class="d-flex flex-row">
+                    <div class="col-2">
+                        <label for="origen">Origen</label>
+                        <input class="form-control" type="text" placeholder="Introduce tu origen" name="origen" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="destino">Destino</label>
+                        <input class="form-control" type="text" placeholder="Introduce tu destino" name="destino" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="ida">Ida</label>
+                        <input class="form-control" type="date" name="ida" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="vuelta">Vuelta</label>
+                        <input class="form-control" type="date" name="vuelta" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="adultos">Adultos</label>
+                        <select name="adultos" class="form-control">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="col-2 align-self-end">
+                        <button type="submit" class="btn btn-success form-control boton-carousel-buscar">Buscar
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="tab-hoteles" role="tabpanel" aria-labelledby="profile-tab">
+                <form action="" method="" class="d-flex flex-row">
+                    <div class="col-4">
+                        <label for="destino">Destino</label>
+                        <input class="form-control" type="text" placeholder="Introduce tu destino" name="destino" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="entrada">Entrada</label>
+                        <input class="form-control" type="date" name="entrada" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="salida">Salida</label>
+                        <input class="form-control" type="date" name="salida" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="adultos">Adultos</label>
+                        <select name="adultos" class="form-control">
+                            <option value="1" selected>Habitacion 1 adulto</option>
+                            <option value="2">Habitacion 2 adultos</option>
+                            <option value="3">Habitacion 3 adultos</option>
+                            <option value="4">Habitacion 4 adultos</option>
+                        </select>
+                    </div>
+                    <div class="col-2 align-self-end">
+                        <button type="submit" class="btn btn-success form-control boton-carousel-buscar">Buscar
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="tab-destinos" role="tabpanel" aria-labelledby="contact-tab">
+                <form action="" method="" class="d-flex flex-row">
+                    <div class="col-2">
+                        <label for="origen">Origen</label>
+                        <input class="form-control" type="text" placeholder="Introduce tu origen" name="origen" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="destino">Destino</label>
+                        <input class="form-control" type="text" placeholder="Introduce tu destino" name="destino" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="ida">Ida</label>
+                        <input class="form-control" type="date" name="ida" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="vuelta">Vuelta</label>
+                        <input class="form-control" type="date" name="vuelta" required>
+                    </div>
+                    <div class="col-2">
+                        <label for="adultos">Adultos</label>
+                        <select name="adultos" class="form-control">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="col-2 align-self-end">
+                        <button type="submit" class="btn btn-success form-control boton-carousel-buscar">Buscar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    {{#if destinos.length}}
+    <div id="destinos">
+        <div class="container-fluid contenedor-destinos">
+            <p class="ultimahora">¡Ultima Hora!</p>
+            <div class="row fila-destinos d-none d-sm-none d-md-flex d-lg-flex d-xl-flex">
+                {{#each destinos}}
+                    {{#if activo}}
+                <div class="col-md-6 col-lg-4 col-xl-4 columna-ultimahora">
+                    <a href="#" class="verDisponibilidad" data-toggle="modal" data-target="#descripcionDestino{{id}}">
+                        <div class="d-flex flex-column destino">
+                            <div class="destino-imagen-home"><img src="{{imagen}}" class="img-fluid" alt="Responsive image"/></div>
+                            <div class=""><h4>{{titulo_descr}}</h4></div>
+                            <div class=""><strong>{{tipo}}</strong></div>
+                            <div class=""><span
+                                    class="descripcion">{{oferta}}</span></div>
+                            <div class="p-3 align-items-center justify-content-end reservar jBox-Tooltip{{id}}"><span
+                                    class="expira"></span><span class="precio">desde<strong>{{precio}}€</strong><a href="#"
+                                                                                                            class="btn btn-warning ">RESERVAR</a></span>
+                            </div>
+
+                            <!--ToolTip de los destinos - INICIO-->
+                            <div style="display: none" id="toolDestino{{id}}">
+                                <div class="tooltip-general">
+                                    <div class="tooltip-salida-img">
+                                        <img src="images/black-plane.png" alt="salida"/>
+                                    </div>
+                                    <div class="tooltip-salida-descripcion">
+                                        <span>Fecha: {{fecha_ida}}</span><br>
+                                        <span>Hora: {{hora_ida}}</span><br>
+                                        <span>Aeropuerto : {{aeropuerto}}</span>
+                                    </div>
+                                </div>
+                                <div class="tooltip-general">
+                                    <div class="tooltip-regreso-img">
+                                        <img src="images/black-plane-reverse.png" alt="salida"/>
+                                    </div>
+                                    <div class="tooltip-regreso-descripcion">
+                                        <span>Fecha: {{fecha_vuelta}}</span><br>
+                                        <span>Hora: {{hora_vuelta}}</span><br>
+                                        <span>Aeropuerto : {{aeropuerto}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--ToolTip de los destinos - FIN-->
+
+
+                        </div>
+                    </a>
+                    <!--Modal de los destinos - INICIO-->
+                    <div class="modal fade" id="descripcionDestino{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content modal-lg">
+                                <div class="modal-header">
+                                    <h2><i class="fas fa-suitcase"></i> Descripcion del destino : {{nombre}}</h2>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class='container-fluid'>
+                                        <div class='row fila-disponibilidad'>
+                                            <div class='col-6 linea-formulario'>
+                                                <div class="destino-imagen-home"><img src="images/{{nombre}}.jpg" class="img-fluid" alt="Responsive image"/></div>
+                                                <h4 class='detalles-oferta'>Detalles de la oferta</h4>
+                                                <span class='descripcion-oferta'>Salida : {{fecha_ida}} Regreso : {{fecha_vuelta}}</span><br>
+                                                <span class='descripcion-oferta'>Vuelo desde {{aeropuerto}}</span><br>
+                                                <div class='descripcion-oferta-precio'><span class='btn btn-warning'>Precio : {{precio}}€</span><span>Solo {{plazas}} plazas disponibles</span></div>
+
+                                            </div>
+                                            <div class='col-6'>
+                                                <div class='row'>
+                                                    <div class='col-6'>
+                                                        <div class='form-group'>
+                                                            <label class='descripcion-label' for='label_origen'>ORIGEN</label>
+                                                            <select class='form-control' id='id_label_single'>
+                                                                <option value='España'>España</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class='col-6'>
+                                                        <div class='form-group'>
+                                                            <label class='descripcion-label' for='label_destino'>DESTINO</label>
+                                                            <select class='form-control'>
+                                                                <option value='España'>{{nombre}}</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='row'>
+                                                    <div class='col-6'>
+                                                        <div class='form-group'>
+                                                            <label for='label-salida' class='descripcion-label'>SALIDA</label>
+                                                            <input class='form-control' type='date' id='example-date-input' value="{{fecha_ida}}"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class='col-6'>
+                                                        <div class='form-group'>
+                                                            <label for='label-salida' class='descripcion-label'>VUELTA</label>
+                                                            <input class='form-control' type='date' id='example-date-input' value="{{fecha_vuelta}}"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='row'>
+                                                    <div class='col-12 columna-ida-idayvuelta'>
+                                                        <input type='radio' name='inlineRadioOptions' id='inlineRadio1' value='ida' checked><label for='label-ida' class='descripcion-label'>IDA</label>
+                                                        <input type='radio' name='inlineRadioOptions' id='inlineRadio1' value='idayvuelta'><label for='label-idayvuelta' class='descripcion-label'>IDA Y VUELTA</label>
+                                                    </div>
+                                                </div>
+                                                <div class='d-flex flex-row justify-content-between'>
+                                                        <button type="button" class='btn btn-primary boton-modal-descripcion-destino'>DESCRIPCION</button>
+                                                        <button type='button' class='btn btn-primary boton-modal-descripcion-destino'>VER DISPONIBILIDAD</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Modal de los destinos - FIN-->
+                </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+
+            <div class="row fila-destinos d-flex d-sm-flex d-md-none d-lg-none d-xl-none">
+                <div class="col-12">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                        {{#each destinos}}
+                            <div class="carousel-item {{#if @first}}active{{/if}}">
+                                <a href="#" title="Destino {{nombre}}">
+                                    <div class="d-flex flex-column destino">
+                                        <div class="destino-imagen-home"><img src="images/{{nombre}}.jpg" class="img-fluid" alt="Responsive image"/></div>
+                                        <div class=""><h4>{{titulo_descr}}</h4></div>
+                                        <div class=""><strong>{{tipo}}</strong></div>
+                                        <div class=""><span class="descripcion">{{oferta}}</span>
+                                        </div>
+                                        <div class="p-3 align-items-center justify-content-end reservar"><span
+                                                class="expira"></span><span class="precio">desde<strong>{{precio}}€</strong><a
+                                                href="#" class="btn btn-warning">RESERVAR</a></span></div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/each}}
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</section>
+
+<section id="somos">
+    <div class="row">
+        <div class="col-md-4 offset-md-1 col-10 offset-1 quiSom">
+            <h2><b>QUIEN SOMOS</b></h2>
+            <p>GeeksHub Travel es una agencia de viajes online creada en 2009 por un equipo de viajeros entusiastas que
+                decideb hacer de su pasión por conocer el mundo un modo de vida.Desde nuestros inicios hemos diseñado
+                más de 500 viajes organizados a diferentes destinos de Europa, Norteamerica y Asia.Nuestro objetivo
+                ahora es ir ampliando horizontes poco a poco</p>
+            <a href="#" class="btn btn-primary btn-lg">Descubrir</a>
+        </div>
+    </div>
+
+</section>
+
+<section>
+    <div id="contacto">
+    <div class="wrapper-contacto">
+        <div class="container-fluid">
+            <div class="row fila-contacto-titulo justify-content-center">
+                <div class="section-content">
+                    <h1 class="section-header"><span class="content-header">Contacta con Nosotros!</span></h1>
+                </div>
+            </div>
+            <div class="row fila-contacto-formulario">
+                <form>
+                    <div class="col-6 linea-formulario">
+                        <div class="form-group">
+                            <label for="usuario">Tu Nombre</label>
+                            <input type="text" class="form-control" id="" placeholder="Introduce tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electronico</label>
+                            <input type="email" class="form-control" id="exampleInputEmail"
+                                   placeholder="Introduce tu correo electronico">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Nº Móvil</label>
+                            <input type="tel" class="form-control" id="telephone"
+                                   placeholder="Introduce tu telefono movil">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="description"> Mensaje</label>
+                            <textarea class="form-control" id="description" placeholder="Tu Mensaje"></textarea>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-default submit"><i class="fa fa-paper-plane"
+                                                                                    aria-hidden="true"></i>Enviar
+                                Mensaje
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row fila-mapa">
+                <div class="col-6 offset-3">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3079.450235040021!2d-0.35812868463229974!3d39.48174697948477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604898947abad3%3A0x5aae0e0b7fa0358a!2sGeeksHubs+Space+Valencia!5e0!3m2!1ses-419!2ses!4v1520767907283"
+                            frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

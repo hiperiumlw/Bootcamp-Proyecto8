@@ -1,0 +1,90 @@
+<section>
+    <div class="wrapper-iniciarsesion">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 offset-lg-2 offset-xl-2">
+                <form action="/users/login" method="post" class="formulario-iniciarsesion">
+                    <div class="formulario-cabecera-iniciarsesion">
+                        <div class="d-flex justify-content-between">
+                            <div class="">
+                                <span class="">Iniciar Sesión</span>
+                            </div>
+                            <div class="">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <p>Aquí puede iniciar la sesión</p>
+                        {{#if registerCorrectly}}
+                            <p style="color: green">{{registerCorrectly}}</p>
+                        {{/if}}
+                        {{#if activated}}
+                            <p style="color: green">{{activated}}</p>
+                        {{/if}}
+                        {{#if usernameError}}
+                            <p style="color: red">{{usernameError}}</p>
+                        {{/if}}
+                        {{#if passwordError}}
+                            <p style="color: red">{{passwordError}}</p>
+                        {{/if}}
+                        {{#if noActivo}}
+                            <p style="color: red">{{noActivo}}</p>
+                        {{/if}}
+                        {{#if emailError}}
+                            <p style="color: red">{{emailError}}</p>
+                        {{/if}}
+                        {{#if recoverCorrect}}
+                            <p style="color: green">{{recoverCorrect}}</p>
+                        {{/if}}
+                        {{#if passwordChanged}}
+                            <p style="color: green">{{passwordChanged}}</p>
+                        {{/if}}
+                    </div>
+                    <div class="formulario-contenido-iniciarsesion">
+                        <label for="usuario">Nombre de Usuario</label>
+                        <input type="text" placeholder="Introduce tu nombre de usuario" name="usuario" required>
+
+                        <label for="contrasenya">Contraseña</label>
+                        <input type="password" placeholder="Introduce tu contraseña" name="password" required>
+                        <div class="d-flex flex-column align-items-center">
+                            <button type="submit" class="btn btn-success boton-iniciarsesion-login">Iniciar Sesion
+                            </button>
+                            <a href="#" data-toggle="modal" data-target="#recuperarContraseña" class="contrasenya-olvidada">¿Contraseña olvidada?</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <div class="puede-iniciarsesion">
+                    <span class="">O puede registrarse...</span>
+                    <div class="texto">
+                    Al crear una cuenta en GeeksHubs Travels puede ganar fantásticas recompensas!
+                    </div>
+                        <a href="/users/register"><button type="submit" class="btn btn-success boton-iniciarsesion-login">Registrarse
+                        </button></a>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="recuperarContraseña" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form action="/email/recover" method="post">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-unlock-alt"></i> Recuperar Contraseña</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="recuperarContraseña">Introduce tu correo</label>
+                                <input type="email" class="form-control" name="email" placeholder="Correo Electronico..." required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

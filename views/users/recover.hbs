@@ -1,0 +1,19 @@
+<section>
+    <div class="wrapper-recuperarContraseña">
+        <div class="row">
+            <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-4 offset-lg-4 offset-xl-4">
+                <form action="/email/changePass" method="post" class="formulario-recuperarcontrasenya">
+                    <input type="text" name="id" value="{{id}}" style="display: none">
+                    <label for="contrasenya">Nueva Contraseña</label>
+                    <input type="password" class="form-control" name="contrasenya" id="contrasenya" placeholder="Contraseña..." required>
+                    <label for="repetir-contrasenya">Repetir Contraseña</label>
+                    <input type="password" class="form-control" name="repetir-contrasenya" id="repetir-contrasenya" placeholder="Repite contraseña..." required>
+                    <div class="d-flex flex-column align-items-center">
+                        <button type="submit" class="btn btn-success boton-recuperarcontrasenya-recover">Recuperar Contraseña
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

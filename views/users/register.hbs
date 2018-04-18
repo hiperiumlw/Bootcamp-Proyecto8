@@ -1,0 +1,54 @@
+<section>
+    <div class="wrapper-registro ">
+        <div class="row fila-formulario-registro">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 offset-lg-2 offset-xl-2">
+                <form action="/users/register" method="post" class="formulario-registro">
+                    <div class="formulario-cabecera-registro">
+                        <div class="d-flex justify-content-between">
+                            <div class="">
+                                <span class="">Registrarse</span>
+                            </div>
+                            <div class="">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <p>Aquí puede crear una cuenta</p>
+                        {{#if usernameError}}
+                            <p style="color: red;">El nombre de usuario ya existe! Por favor , intentelo de nuevo.</p>
+                        {{/if}}
+                        {{#if emailError}}
+                            <p style="color: red;">El email ya existe! Por favor , intentelo de nuevo.</p>
+                        {{/if}}
+                    </div>
+                    <div class="formulario-contenido-registro">
+                        <label for="usuario">Nombre de Usuario</label>
+                        <input type="text" id="usuario" placeholder="Introduce tu nombre de usuario" name="usuario" required>
+
+                        <label for="email">Email</label>
+                        <input type="email" placeholder="Introduce tu email" id="email-registro" name="email" required>
+
+                        <label for="contrasenya">Contraseña</label>
+                        <input type="password" placeholder="Introduce tu contraseña" id="contrasenya" name="password" required>
+
+                        <label for="repetir-contrasenya">Repite tu contraseña</label>
+                        <input type="password" placeholder="Introduce de nuevo tu contraseña" id="repetir-contrasenya" name="repetir-password" required>
+                        <div class="d-flex flex-column align-items-center">
+                            <button type="submit" class="btn btn-success boton-iniciarsesion-login">Registrarse
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <div class="puede-iniciarsesion">
+                    <span class="">¿Tiene una cuenta ya?</span>
+                    <div class="texto">
+                        Inicie sesión y sigue aprovechando nuestros servicios en GeeksHubs Travels.
+                    </div>
+                    <a href="/users/login"><button type="submit" class="btn btn-success boton-iniciarsesion-login">Iniciar Sesión
+                    </button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

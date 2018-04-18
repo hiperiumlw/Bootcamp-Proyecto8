@@ -1,0 +1,58 @@
+.wrapper-recuperarContraseña{
+    min-height: 30em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: #F5F5F5;
+}
+
+.formulario-recuperarcontrasenya{
+    background-color: #FFFFFF;
+    padding: 3%;
+    font-family: 'Roboto Condensed',"Microsoft YaHei",Arial,sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.formulario-recuperarcontrasenya label{
+    font-family: 'Roboto Condensed',"Microsoft YaHei",Arial,sans-serif;
+    font-size: 16px;
+    color: #3F4048 !important;
+}
+
+.formulario-recuperarcontrasenya input[type=password]{
+    box-shadow: inset 2px 2px 2px #F5F5F5;
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: 1px solid #BCBEC0;
+}
+
+.formulario-recuperarcontrasenya input[type=password]:focus{
+    outline: none;
+}
+
+.formulario-recuperarcontrasenya input[type=password]::placeholder{
+    font-family: 'Roboto Condensed',"Microsoft YaHei",Arial,sans-serif;
+    color: #BCBEC0;
+    font-style: italic;
+}
+
+.boton-recuperarcontrasenya-recover{
+    font-family: 'Roboto Condensed',"Microsoft YaHei",Arial,sans-serif;
+    color: #FFFFFF;
+    min-width: 10em !important;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #1cbbb4;
+    border: transparent;
+    transition: background-color 0.5s;
+}
+
+.boton-recuperarcontrasenya-recover:hover{
+    background-color: #1aaaa1 !important;
+}

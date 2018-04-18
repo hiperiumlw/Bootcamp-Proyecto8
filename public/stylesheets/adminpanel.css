@@ -1,0 +1,22 @@
+.wrapper-adminpanel{
+    padding-top: 5em;
+    padding-bottom: 5em;
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+    border-top: 1px solid #1cbbb4;
+}
+
+.imagen-adminpanel{
+    width: 5em;
+}
+
+.tabla-destinos-adminpanel{
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.12), 0 3px 3px rgba(0,0,0,0.24);
+}
+.tabla-destinos-adminpanel tr th{
+    text-align: center;
+}
+
+#añadirdestino-adminpanel .col-md-6{
+    margin-bottom: 0.5em;
+}

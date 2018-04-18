@@ -1,0 +1,89 @@
+
+/* REGISTRO - INICIO */
+.wrapper-registro{
+    min-height: 30em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: #F5F5F5;
+
+}
+
+.formulario-registro{
+    background-color: #FFFFFF;
+}
+.formulario-cabecera-registro,.formulario-contenido-registro{
+    padding: 3%;
+}
+.formulario-cabecera-registro .fa-user,.formulario-cabecera-registro span{
+    color:#1cbbb4;
+}
+.formulario-cabecera-registro span{
+    font-family: 'Roboto Condensed',"Microsoft YaHei",Arial,sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+.formulario-cabecera-registro p{
+    font-family: 'Roboto Condensed',"Microsoft YaHei",Arial,sans-serif;
+    font-size: 14px;
+}
+.formulario-contenido-registro label{
+    font-family: 'Roboto Condensed',"Microsoft YaHei",Arial,sans-serif;
+    font-size: 16px;
+    color: #3F4048 !important;
+}
+.formulario-contenido-registro input[type=text],.formulario-contenido-registro input[type=password] ,.formulario-contenido-registro input[type=email]{
+    box-shadow: inset 2px 2px 2px #F5F5F5;
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: 1px solid #BCBEC0;
+}
+
+.formulario-contenido-registro input[type=text]:focus,.formulario-contenido-registro input[type=password]:focus ,.formulario-contenido-registro input[type=email]:focus{
+    outline: none;
+}
+.formulario-contenido-registro input[type=text]::placeholder,.formulario-contenido-registro input[type=password]::placeholder ,.formulario-contenido-registro input[type=email]::placeholder{
+    font-family: 'Roboto Condensed',"Microsoft YaHei",Arial,sans-serif;
+    color: #BCBEC0;
+    font-style: italic;
+}
+/* Set a style for all buttons */
+.formulario-contenido-registro button {
+    font-family: 'Roboto Condensed',"Microsoft YaHei",Arial,sans-serif;
+    color: #FFFFFF;
+    min-width: 10em !important;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #1cbbb4;
+    border: transparent;
+    transition: background-color 0.5s;
+}
+.formulario-contenido-registro .btn-danger,.formulario-contenido-registro .btn-success{
+    border-radius: 0px;
+    min-height: 3em;
+}
+
+@media (max-width: 768px) {
+    /*.wrapper-registro{*/
+        /*min-height: 15em;*/
+
+    /*}*/
+    /*.formulario-contenido-registro label{*/
+        /*font-size: 0.7em;*/
+    /*}*/
+    /*.formulario-contenido-registro input{*/
+        /*height: 1em;*/
+        /*margin: 0px !important;*/
+    /*}*/
+    /*.fila-formulario-registro{*/
+        /*margin: 0px !important;*/
+    /*}*/
+
+
+}
+/* REGISTRO - FIN */
