@@ -1,0 +1,75 @@
+<section>
+    <div class="wrapper-shoppingcart">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6 offset-1">
+                    <div class="columna-shopping-cart-lista">
+                    <h3>{{#with carrito}} ({{totalQuantity}}){{/with}} Artículos en la cesta</h3>
+                    {{#if carrito.items}}
+                        <table class="table tabla-carrito">
+                            <thead>
+                                <tr>
+                                    <td scope="col">Nº</td>
+                                    <td scope="col">Producto</td>
+                                    <td scope="col">Descripcion</td>
+                                    <td scope="col">Unidades</td>
+                                    <td scope="col">Total</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {{#each carrito.items}}
+                                <tr>
+                                    <td scope="row">{{id}}</td>
+                                    <td><img class="img-fluid imagen-shoppingcart" src="{{imagen}}" alt="{{nombre}}"></td>
+                                    <td>{{titulo_descr}}</td>
+                                    <td class="d-flex flex-row flex-quantity-shoppingcart">
+                                        <button class="btn btn-primary"><a href="/cart/removeQuantity/{{id}}"><i class="fas fa-minus"></i></a></button>
+                                        <input type="text" class="form-control" name="quantity" id="quantity-shoppingcart" value="{{quantity}}"/>
+                                        <button class="btn btn-primary"><a href="/cart/addQuantity/{{id}}"><i class="fas fa-plus"></i></a></button>
+                                    </td>
+                                    <td>
+                                        <span>{{totalPrice}}€</span>
+                                        <a href="/cart/remove/{{id}}"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button></a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            <!--<tr>-->
+                                <!--<td>-->
+                                    <!--<button type="button" class="btn btn-outline-secondary" data-toggle="modal"-->
+                                            <!--data-target="#añadirdestino-adminpanel"><i class="fas fa-plane"></i>Añadir nuevo-->
+                                    <!--</button>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            </tbody>
+                        </table>
+                    {{else}}
+                        <p>No hay ningún artículo en la cesta de la compra!</p>
+                    {{/if}}
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <a href="/cart/removeAll"><button type="submit" class="btn btn-outline-secondary boton-vaciarcesta-shoppingcart"><i class="fas fa-trash"></i> Vaciar cesta
+                        </button></a>
+                        <a href="/"><button type="submit" class="btn btn-outline-secondary boton-seguircomprando-shoppingcart"> Seguir comprando
+                        </button></a>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="columna-shopping-cart-preciototal">
+                        <p>La confirmación y entrega de los billetes de avión puede tardar entre 3 y 4 días laborales.</p>
+                        <hr>
+                        <div class="d-flex flex-row justify-content-between">
+                            <h4>Total</h4>
+                            <h4>{{carrito.totalPrice}}€</h4>
+                        </div>
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn btn-success boton-procesarpago-shoppingcart">Procesar pago
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -45,10 +45,10 @@
                         <li class="nav-item">
                             <a class="nav-link opcion-menu-home" href="#contacto">Contáctanos</a>
                         </li>
-                        {{#if isLogged}}
+                        {{#with cliente}}
                             <li class="nav-item dropdown">
-                                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> {{isLogged}}</a>
-                                <div class="dropdown-menu">
+                                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> {{usuario}}</a>
+                                <div class="dropdown-menu dropdown-menu-right lista-usuario">
                                     <a class="dropdown-item" href="#">Mi Perfil</a>
                                     {{#if isAdmin}}
                                     <a class="dropdown-item" href="/admins/adminpanel">Administrar los Destinos</a>
@@ -61,7 +61,34 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/users/login"><i class="fas fa-user"></i> Registrarse / Iniciar Sesión</a>
                             </li>
-                        {{/if}}
+                        {{/with}}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" data-toggle="dropdown" href="/cart" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-shopping-cart"></i> <span class="quantity-carrito">{{#with carrito}}{{totalQuantity}}{{else}}0{{/with}}</span></a>
+                            {{#if carrito}}
+                                <div class="dropdown-menu dropdown-menu-right lista-carrito">
+                                    {{#each carrito.items}}
+                                        <div class="dropdown-item item-carrito d-flex flex-row justify-content-center align-items-center">
+                                            <div class="w-50 p-4">
+                                                <img src="{{imagen}}" alt="{{nombre}}" class="img-fluid"/>
+                                            </div>
+                                            <div class="w-50 p-1 d-flex flex-column">
+                                                    <span class="item-carrito-cantidad">{{quantity}} x</span>
+                                                    <span class="prueba-div">{{titulo_descr}}</span>
+                                                    <span class="item-carrito-precio">Precio : {{precio}} €</span>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                    <div class="d-flex flex-column justify-content-center align-items-center totalprice-carrito">
+                                        <span >Total : {{carrito.totalPrice}} €</span>
+                                    </div>
+                                    <div class="d.flex flex-column ">
+                                        <a href="/cart"
+                                           class="btn btn-warning boton-vertucompra d-flex flex-column justify-content-center">Ver tu compra</a>
+                                    </div>
+                                </div>
+                            {{/if}}
+
+                        </li>
                         <!--<li class="nav-item">-->
                             <!--<a class="nav-link opcion-menu-home" href="#"><i class="fas fa-shopping-cart"></i></a>-->
                         <!--</li>-->

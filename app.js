@@ -7,11 +7,13 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var winston = require('./config/winston');
 var paginate = require('express-paginate');
+let passport = require('passport');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/users')
 var admins = require('./routes/admins');
 var email = require('./routes/email');
+let cart = require('./routes/cart');
 
 var app = express();
 app.use(paginate.middleware(2,20));
@@ -27,7 +29,7 @@ hbsUtils.registerWatchedPartials(`${__dirname}/views/partials`);
 require('./helpers/hbs')(hbs);
 
 // app.use(logger('dev'));
-app.use(morgan('combined',{stream: winston.stream}))
+// app.use(morgan('combined',{stream: winston.stream}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -43,10 +45,16 @@ app.use(session({
 }));
 
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+// let iniciarPassport = require('./helpers/passport');
+// iniciarPassport(passport);
+// var usersRouter = require('./routes/users')(passport);
 
 app.use('/users', usersRouter);
 app.use('/admins',admins);
 app.use('/email/',email);
+app.use('/cart',cart);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler

@@ -19,14 +19,8 @@
                         {{#if activated}}
                             <p style="color: green">{{activated}}</p>
                         {{/if}}
-                        {{#if usernameError}}
-                            <p style="color: red">{{usernameError}}</p>
-                        {{/if}}
-                        {{#if passwordError}}
-                            <p style="color: red">{{passwordError}}</p>
-                        {{/if}}
-                        {{#if noActivo}}
-                            <p style="color: red">{{noActivo}}</p>
+                        {{#if mensajeError}}
+                            <p style="color: red">{{mensajeError}}</p>
                         {{/if}}
                         {{#if emailError}}
                             <p style="color: red">{{emailError}}</p>
@@ -40,7 +34,7 @@
                     </div>
                     <div class="formulario-contenido-iniciarsesion">
                         <label for="usuario">Nombre de Usuario</label>
-                        <input type="text" placeholder="Introduce tu nombre de usuario" name="usuario" required>
+                        <input type="text" placeholder="Introduce tu nombre de usuario" name="username" required>
 
                         <label for="contrasenya">Contraseña</label>
                         <input type="password" placeholder="Introduce tu contraseña" name="password" required>

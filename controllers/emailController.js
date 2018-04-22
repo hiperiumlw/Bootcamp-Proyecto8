@@ -21,12 +21,12 @@ emailController.activate = (req,res,next)=>{
 emailController.recover = (req,res,next)=>{
     usersModel.checkEmail(req.body.email,(err,resultado)=>{
         if (err) next();
-        if (resultado == '') {
+        if (!resultado) {
             req.flash('emailError', 'El email no existe, inténtelo de nuevo!')
             res.redirect('/users/login');
         }
         else {
-            let hash = encodeURIComponent(resultado[0].hash);
+            let hash = encodeURIComponent(resultado.hash);
             req.flash('recoverCorrect','Le hemos enviado un email para recuperar su contraseña!')
             Email.transporter.use('compile', Hbs ({
                 viewEngine: 'hbs',
@@ -40,7 +40,7 @@ emailController.recover = (req,res,next)=>{
                 // '<a href="http://localhost:3000/email/recover/'+hash+'">Recuperar contraseña de Geekshubs travels.</a>'
                 template:'recover',
                 context:{
-                    usuario:resultado[0].usuario,
+                    usuario:resultado.usuario,
                     ruta: 'http://localhost:3000/email/recover/'+hash+'',
                 },
                 attachments:[
@@ -66,13 +66,13 @@ emailController.checkHash = (req,res,next)=>{
     let hash = decodeURIComponent(req.params.hash);
     usersModel.checkHash(hash,(error,resultado)=>{
         if (error) next();
-        if (resultado== ''){
+        if (!resultado){
             next()
         } else {
             res.render('users/recover',{
                 title: 'Recuperar Contraseña',
                 layout: 'layout',
-                id: resultado[0].id
+                id: resultado.id
             })
         }
 
@@ -98,13 +98,13 @@ emailController.changePass = (req,res,next)=>{
 emailController.recoverAdmin = (req,res,next)=>{
     usersModel.getUserById(req.params.id,(error,resultado)=>{
         if (error) next();
-        if (req.session.isAdmin) {
-            let hash = encodeURIComponent(resultado[0].hash);
+        if (req.isAuthenticated() && req.user.isAdmin) {
+            let hash = encodeURIComponent(resultado.hash);
             req.flash('sendEmailCorrectly','Se ha enviado el email de recuperacion al usuario correctamente!')
             let message= {
-                to: resultado[0].email,
+                to: resultado.email,
                 subject: 'Email de recuperación de contraseña',
-                html: '<p>Estimado/a '+resultado[0].usuario+':<br>Haga click en el enlace para recuperar su contraseña.</p><br>' +
+                html: '<p>Estimado/a '+resultado.usuario+':<br>Haga click en el enlace para recuperar su contraseña.</p><br>' +
                 '<a href="http://localhost:3000/email/recover/'+hash+'">Recuperar contraseña de Geekshubs travels.</a>'
             }
             Email.transporter.sendMail(message,(error,info) =>{
