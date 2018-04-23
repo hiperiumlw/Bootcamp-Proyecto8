@@ -116,6 +116,37 @@
                                 </div>
                             </div>
                         {{/each}}
+
+                        <!--Paginacion-->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+
+                                <!-- anterior enlace -->
+                                {{#with paginate}}
+                                    {{#if hasPreviousPages}}<!--res.locals.hasPreviousPages-->
+                                        <li class="page-item prev">
+                                            <a class="page-link" href="{{prev_link this}}">Anterior</a>
+                                        </li>
+                                    {{/if}}
+                                {{/with}}
+
+                                <!-- del 1 al n -->
+                                {{#each links}}
+                                    <li class="page-item {{is_active @index ../currentPage }}"><!-- custom helper -->
+                                        <a class="page-link" href="{{url}}">{{number}}</a>
+                                    </li>
+                                {{/each}}
+
+                                <!-- siguiente enlace -->
+                                {{#with paginate}}
+                                    {{#has_next_links ../pageCount this}}
+                                        <li class="page-item next">
+                                            <a class="page-link" href="{{next_link ../this}}">Siguiente</a>
+                                        </li>
+                                    {{/has_next_links}}
+                                {{/with}}
+                            </ul>
+                        </nav>
                     {{/if}}
                     <!-- Modal -->
                     <div class="modal fade" id="añadirusuario-userpanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

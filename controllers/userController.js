@@ -3,6 +3,7 @@ var usersModel = require('.././models/usersModel');
 const Email = require('../config/emailConf');
 const Hbs = require('nodemailer-express-handlebars');
 const Path = require('path');
+const paginate = require('express-paginate');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 var userController = {};
@@ -21,30 +22,29 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
-// passport/login.js
 passport.use(new LocalStrategy({
         passReqToCallback : true
     },
+    //funcion para recibir los parametros de req,username,password y un callback
     function(req, username, password, done) {
         usersModel.loginPassport({ 'username' :  username },
             function(err, usuario) {
-                // In case of any error, return using the done method
+                // En caso de error, devolvemos el mismo con el done
                 if (err)
                     return done(err);
-                // Username does not exist, log error & redirect back
+                // El usuario no existe , registramos el error y nos redirigimos hacia atrás
                 if (!usuario){
                     return done(null, false, req.flash('mensajeError', 'El usuario no existe, intentelo de nuevo!'));
                 }
-                // User exists but wrong password, log the error
+                // El usuario existe pero la contraseña es incorrecta
                 if (!comprobarPass(usuario, password)){
                     return done(null, false, req.flash('mensajeError', 'La contraseña is incorrecta , intentelo de nuevo!'));
                 }
+                // Comprobamos si el usuario está activo o no
                 if (!usuarioActivo(usuario)){
                     return done(null,false,req.flash('mensajeError','Su cuenta no esta activa , revisa su correo para activarla!'))
                 }
-                console.log("compruebo todo")
-                // User and password both match, return user from
-                // done method which will be treated like success
+                // Todo es correcto , el done nos devolvera un succes
                 return done(null, usuario);
             }
         );
@@ -204,20 +204,31 @@ userController.logOut = function (req, res, next) {
 };
 
 userController.getAllUsers = (req, res, next) => {
-    usersModel.getAllUsers((err, clientes) => {
+    let page=(parseInt(req.query.page) || 1) -1;
+    let limit = 4;
+    let offset = page * limit ;
+    usersModel.getAllUsers(offset,limit,(err, clientes) => {
+        const currentPage = offset ===0 ? 1:(offset/limit)+1;
+        const totalCount = clientes.count;
+        const pageCount = Math.ceil(totalCount /limit);
+        const pagination = paginate.getArrayPages(req)(10,pageCount, currentPage);
+
         if (err) next();
         if (req.isAuthenticated() && req.user.isAdmin) {
             res.render('admins/userpanel', {
                 title: "UsersPanel",
                 layout: 'layout',
-                clientes: clientes,
+                clientes: clientes.rows,
                 cliente: req.user,
                 usernameError: req.flash('usernameError'),
                 emailError: req.flash('emailError'),
                 registerCorrectly: req.flash('registerCorrectly'),
                 borrarUsuario: req.flash('borrarUsuario'),
                 editar: req.flash('editar'),
-                sendEmailCorrectly: req.flash('sendEmailCorrectly')
+                sendEmailCorrectly: req.flash('sendEmailCorrectly'),
+                currentPage:currentPage,
+                links:pagination,
+                pageCount:pageCount
             })
         } else {
             next();

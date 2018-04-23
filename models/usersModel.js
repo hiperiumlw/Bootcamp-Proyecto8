@@ -103,14 +103,16 @@ Users.loginPassport = (usuario,cb)=>{
     })
 }
 
-Users.getAllUsers = (cb)=>{
+Users.getAllUsers = (offset,limit,cb)=>{
     // if (!conn) return cb("No se ha podido crear la conexion");
     // conn.query('SELECT * FROM cliente',(err,resultado)=>{
     //     if (err) return cb(err);
     //     return cb(null,resultado);
     // })
-    User.findAll().then((clientes)=>{
-        return cb(null,clientes);
+    User.findAndCount({offset:offset,limit:limit}).then((clientes)=>{
+        let rows = clientes.rows;
+        let count = clientes.count;
+        return cb(null,{rows,count});
     }).error((error)=>{
         return cb(error);
     })
