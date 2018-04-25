@@ -1,0 +1,24 @@
+{
+
+	"Inicio": "Inicio",
+	"Destinos": "Destinos",
+	"Quienes Somos": "Quienes Somos",
+	"Contáctanos": "Contáctanos",
+	"Registrarse / Iniciar Sesión": "Registrarse / Iniciar Sesión",
+    "Mi Perfil": "Mi Perfil",
+    "Administrar los Destinos": "Administrar los Destinos",
+    "Administrar los Usuarios": "Administrar los Usuarios",
+    "Cerrar Sesión": "Cerrar Sesión",
+    "Ver tu compra": "Ver tu compra",
+
+    "Vuelos":"Vuelos",
+    "Hoteles":"Hoteles",
+    "Origen":"Origen",
+    "Destino":"Destino",
+    "Ida":"Ida",
+    "Vuelta":"Vuelta",
+    "Adultos":"Adultos",
+    "Buscar":"Buscar",
+    "Entrada" : "Entrada",
+    "Salida": "Salida"
+}

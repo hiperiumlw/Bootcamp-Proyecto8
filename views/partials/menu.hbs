@@ -13,8 +13,26 @@
                         </div>
                     </div>
                     <div class="d-flex flex-row mr-5">
-                        <div class="">
-
+                        <div class="menu-informacion-idioma">
+                             {{#if locale}}
+                            <div class="dropdown">
+                                <button class="dropdown-toggle boton-menuprincipal-idioma" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="/images/blank.gif" class="flag flag-es" alt="idioma" /> Spanish
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/locale/en"><img src="/images/blank.gif" class="flag flag-gb" alt="idioma" /> English</a>
+                                </div>
+                            </div>
+                             {{else}}
+                                 <div class="dropdown">
+                                     <button class="dropdown-toggle boton-menuprincipal-idioma" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                         <img src="/images/blank.gif" class="flag flag-gb" alt="idioma" /> English
+                                     </button>
+                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                         <a class="dropdown-item" href="/locale/es"><img src="/images/blank.gif" class="flag flag-es" alt="idioma" /> Spanish</a>
+                                     </div>
+                                 </div>
+                             {{/if}}
                         </div>
                         <div class="menu-informacion-redessociales">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -34,32 +52,32 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item active">
-                            <a class="nav-link opcion-menu-home" href="/">Inicio <span class="sr-only">(current)</span></a>
+                            <a class="nav-link opcion-menu-home" href="/">{{__ "Inicio"}} <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link opcion-menu-home" href="#destinos">Destinos</a>
+                            <a class="nav-link opcion-menu-home" href="#destinos">{{__ "Destinos"}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link opcion-menu-home" href="#somos">Quienes Somos</a>
+                            <a class="nav-link opcion-menu-home" href="#somos">{{__ "Quienes Somos"}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link opcion-menu-home" href="#contacto">Contáctanos</a>
+                            <a class="nav-link opcion-menu-home" href="#contacto">{{__ "Contáctanos"}}</a>
                         </li>
                         {{#with cliente}}
                             <li class="nav-item dropdown">
-                                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> {{usuario}}</a>
+                                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{#if imagen}}<img src="{{imagen}}" alt="twitter" class="img-fluid" width="20px"/> {{else}}<i class="fas fa-user"></i>{{/if}} {{usuario}}</a>
                                 <div class="dropdown-menu dropdown-menu-right lista-usuario">
-                                    <a class="dropdown-item" href="#">Mi Perfil</a>
+                                    <a class="dropdown-item" href="#">{{../__ "Mi Perfil"}}</a>
                                     {{#if isAdmin}}
-                                    <a class="dropdown-item" href="/admins/adminpanel">Administrar los Destinos</a>
-                                    <a class="dropdown-item" href="/admins/userpanel">Administrar los Usuarios</a>
+                                    <a class="dropdown-item" href="/admins/adminpanel">{{../__ "Administrar los Destinos"}}</a>
+                                    <a class="dropdown-item" href="/admins/userpanel">{{../__ "Administrar los Usuarios"}}</a>
                                     {{/if}}
-                                    <a class="dropdown-item" href="/users/logout">Cerrar Sesión</a>
+                                    <a class="dropdown-item" href="/users/logout">{{ ../__ "Cerrar Sesión"}}</a>
                                 </div>
                             </li>
                         {{else}}
                             <li class="nav-item">
-                                <a class="nav-link" href="/users/login"><i class="fas fa-user"></i> Registrarse / Iniciar Sesión</a>
+                                <a class="nav-link" href="/users/login"><i class="fas fa-user"></i> {{__ "Registrarse / Iniciar Sesión"}}</a>
                             </li>
                         {{/with}}
                         <li class="nav-item dropdown">
@@ -83,7 +101,7 @@
                                     </div>
                                     <div class="d.flex flex-column ">
                                         <a href="/cart"
-                                           class="btn btn-warning boton-vertucompra d-flex flex-column justify-content-center">Ver tu compra</a>
+                                           class="btn btn-warning boton-vertucompra d-flex flex-column justify-content-center">{{__ "Ver tu compra"}}</a>
                                     </div>
                                 </div>
                             {{/if}}

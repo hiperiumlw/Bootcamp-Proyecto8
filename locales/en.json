@@ -1,0 +1,27 @@
+{
+
+    "Inicio": "Home",
+	"Destinos": "Destinations",
+	"Quienes Somos": "About us",
+	"Contáctanos": "Contact us",
+	"Registrarse / Iniciar Sesión": "Register / Login",
+    "Mi Perfil": "My Profile",
+    "Administrar los Destinos": "Administrate Destinations",
+    "Administrar los Usuarios": "Administrate Users",
+    "Cerrar Sesión": "Logout",
+    "Ver tu compra": "Shopping Cart",
+
+  "Vuelos":"Flights",
+  "Hoteles":"Hotels",
+  "Origen":"Origin",
+  "Destino":"Destination",
+  "Ida":"Departure",
+  "Vuelta":"Arrival",
+  "Adultos":"Adults",
+  "Buscar":"Search",
+  "Entrada" : "Check-in",
+  "Salida": "Check-out"
+
+
+
+}

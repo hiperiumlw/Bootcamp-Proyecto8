@@ -100,6 +100,17 @@
     position: relative;
     top:-12px;
 }
+
+.boton-menuprincipal-idioma{
+    background-color: transparent;
+    border: transparent;
+    color: #acacac;
+    margin-right: 1em;
+}
+
+.menu-informacion-idioma .dropdown-item{
+    color: #acacac;
+}
 /*.fa-shopping-cart{*/
     /*font-size: 2em;*/
 /*}*/

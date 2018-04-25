@@ -21,6 +21,12 @@ const User = sequelize.define('cliente',{
     },
     active:{
         type:SEQUELIZE.BOOLEAN
+    },
+    twitterId:{
+        type:SEQUELIZE.INTEGER
+    },
+    imagen:{
+        type:SEQUELIZE.STRING
     }
 },{
     freezeTableName:true,
@@ -236,5 +242,18 @@ Users.getUserById = (id,cb)=>{
         return cb(error);
     })
 };
+
+Users.findOrCreateTwitter = (usuario,cb)=>{
+    // console.log(usuario.photos[0].value);
+    User.findOrCreate({
+        where:{
+            twitterId:usuario.id
+        },defaults:{usuario:usuario.username,isAdmin:false,active:true,twitterId:usuario.id,imagen:usuario.photos[0].value}
+    }).spread((user,created)=>{
+        return cb(null,user);
+    }).error((error)=>{
+        return cb(error);
+    })
+}
 
 module.exports = Users;

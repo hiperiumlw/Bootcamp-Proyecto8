@@ -5,6 +5,7 @@ errorController.getErrorPage = (req,res,next)=>{
                 title:'Error Page',
                 layout:'layout',
                 cliente:req.user,
+                carrito:req.session.cart
             });
 };
 

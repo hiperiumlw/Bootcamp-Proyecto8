@@ -4,6 +4,10 @@ const paginate = require('express-paginate');
 let Cart = require('../class/cart');
 
 destinationsController.getAllDestinationsHome= (req, res, next)=> {
+    let spanish = 0;
+    if (res.locale == 'en') spanish = 0;
+    else spanish =1;
+
     let cart = new Cart(req.session.cart ? req.session.cart : {});
     destinationsModel.getAllDestinations((err,destinos)=>{
         if(err) next(err);
@@ -12,7 +16,8 @@ destinationsController.getAllDestinationsHome= (req, res, next)=> {
             layout: 'layout',
             destinos: destinos,
             cliente:req.user,
-            carrito:cart
+            carrito:cart,
+            locale:spanish
             });
     })
 };
@@ -41,7 +46,8 @@ destinationsController.getAllDestinationsAdmin= (req, res, next)=> {
                 actualizar: req.flash('actualizar'),
                 currentPage:currentPage,
                 links:pagination,
-                pageCount:pageCount
+                pageCount:pageCount,
+                carrito:req.session.cart
             })
         }else{
             next();

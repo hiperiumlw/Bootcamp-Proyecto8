@@ -8,6 +8,7 @@ var flash = require('connect-flash');
 var winston = require('./config/winston');
 var paginate = require('express-paginate');
 let passport = require('passport');
+let i18n = require('i18n');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users')
@@ -17,6 +18,15 @@ let cart = require('./routes/cart');
 
 var app = express();
 app.use(paginate.middleware(2,20));
+
+i18n.configure({
+    locales:['es','en'],
+    cookie:'secret-lang',
+    directory:__dirname+'/locales',
+    defaultLocales:'es',
+    objectNotation:true
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -47,10 +57,12 @@ app.use(session({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-// let iniciarPassport = require('./helpers/passport');
-// iniciarPassport(passport);
-// var usersRouter = require('./routes/users')(passport);
+app.use(i18n.init);
 
+app.use((req,res,next)=>{
+    res.locals.user= req.user;
+    next();
+})
 app.use('/users', usersRouter);
 app.use('/admins',admins);
 app.use('/email/',email);
